@@ -1,0 +1,20 @@
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust the height as needed */
+    background-color: #ccc; /* Placeholder background, replace with an image */
+    background-image: url('https://wallpapers.com/images/hd/action-movie-2880-x-1800-wallpaper-1iqe0lpr20s36mgr.jpg'); /* Add your image URL here */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .centered-text {
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    color: white; /* Adjust text color based on the image */
+    font-size: 50px; /* Adjust font size as needed */
+    text-align: center;
+  }
+  
