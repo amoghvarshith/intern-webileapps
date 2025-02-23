@@ -4,7 +4,7 @@ const cors = require("cors");
 const userRoute = require('./controllers/userController')
 
 const app = express();
-const port=process.env.PORT||3000;
+
 
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/imdb")
