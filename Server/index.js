@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const app = express();
 
+
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://admin12:eDW0USMLsHIe6ldD@cluster0.nrcmq.mongodb.net/imdb")
   .then(() => console.log('DB Connected'))
