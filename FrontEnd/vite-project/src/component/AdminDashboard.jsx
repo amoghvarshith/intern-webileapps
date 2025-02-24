@@ -24,7 +24,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/users/count");
+        const response = await axios.get("http://localhost:3000/auth/count");
         setUserCount(response.data.count);
       } catch (err) {
         setError("Failed to fetch user count");
@@ -38,7 +38,7 @@ function AdminDashboard() {
 
   const inactiveUsers = userCount - activeUsers;
 
-  // Movie upload handler
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -76,14 +76,13 @@ function AdminDashboard() {
     navigate("/");
   };
 
-  // When Feedbacks card is clicked, scroll to the feedback section
   const scrollToFeedbacks = () => {
     if (feedbackSectionRef.current) {
       feedbackSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  // When Upload card is clicked, show an overlay animation
+  
   const handleUploadClick = () => {
     setShowUploadAnimation(true);
     setTimeout(() => setShowUploadAnimation(false), 2000);
@@ -91,7 +90,7 @@ function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 p-8 text-white relative">
-      {/* Upload Feature Animation Overlay */}
+     
       {showUploadAnimation && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 z-50">
           <ClipLoader color="#fff" size={50} />
@@ -110,7 +109,7 @@ function AdminDashboard() {
         <div className="text-center text-lg mb-6">Welcome, Admin! Manage your application here.</div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {/* Users Card */}
+         
           <div className="bg-blue-500 p-6 rounded-lg shadow-md hover:scale-105 transition">
             <FiUsers className="text-white text-4xl mx-auto mb-2" />
             <h2 className="text-xl font-semibold text-white text-center">View Users</h2>
@@ -134,13 +133,13 @@ function AdminDashboard() {
             <h2 className="text-xl font-semibold text-white text-center">FeedBacks</h2>
           </div>
 
-          {/* Settings Card */}
+         
           <div className="bg-red-500 p-6 rounded-lg shadow-md hover:scale-105 transition">
             <FiSettings className="text-white text-4xl mx-auto mb-2" />
             <h2 className="text-xl font-semibold text-white text-center">Settings</h2>
           </div>
 
-          {/* Upload/Create Movie Card */}
+          
           <div
             className="bg-purple-500 p-6 rounded-lg shadow-md hover:scale-105 transition cursor-pointer"
             onClick={handleUploadClick}
@@ -150,7 +149,7 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* Pie Chart Section */}
+       
         <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">User Statistics</h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -195,7 +194,7 @@ function AdminDashboard() {
           </form>
         </div>
 
-        {/* Feedback Display Section */}
+
         <div ref={feedbackSectionRef} className="mt-8 bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">Feedbacks</h2>
           {feedbacks.length > 0 ? (

@@ -19,8 +19,8 @@ import AdminDashboard from "./component/AdminDashboard";
 import { FeedbackProvider } from "./component/FeedbackContext"; // Added import
 
 function App() {
+  // State for managing user-specific watchlist
   const [watchlist, setWatchlist] = useState([]);
-  // Initialize login state from localStorage
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem("isLoggedIn") === "true";
   });
@@ -29,16 +29,20 @@ function App() {
     return localStorage.getItem("userEmail") || "";
   });
 
+  // Retrieve user-specific watchlist on page load or user login
   useEffect(() => {
-    const savedWatchlist = localStorage.getItem("movieApp");
-    if (savedWatchlist) {
-      setWatchlist(JSON.parse(savedWatchlist));
+    if (userEmail) {
+      const savedWatchlist = localStorage.getItem(`watchlist_${userEmail}`);
+      setWatchlist(savedWatchlist ? JSON.parse(savedWatchlist) : []);
     }
-  }, []);
+  }, [userEmail]);
 
+  // Update user-specific watchlist in localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem("movieApp", JSON.stringify(watchlist));
-  }, [watchlist]);
+    if (userEmail) {
+      localStorage.setItem(`watchlist_${userEmail}`, JSON.stringify(watchlist));
+    }
+  }, [watchlist, userEmail]);
 
   const handleAddWatchlist = (movieObj) => {
     if (!watchlist.some((movie) => movie.id === movieObj.id)) {
@@ -68,10 +72,11 @@ function App() {
     localStorage.setItem("userEmail", email);
   };
 
-  // Remove login state from localStorage on logout
+  // Remove login state and user-specific data on logout
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserEmail("");
+    setWatchlist([]); // Clear watchlist from state
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
   };

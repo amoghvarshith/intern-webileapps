@@ -115,13 +115,13 @@ const Navbar = ({ setSearchQuery, onLogout ,userEmail}) => {
                       <p className="text-sm text-gray-400">{nameNow}</p>
                     </div>
                   </li>
-                  <li
+                  {/* <li
                     className="flex items-center px-4 py-2 hover:bg-gray-700 cursor-pointer"
                     onClick={() => console.log("Profile Settings")}
                   >
                     <FontAwesomeIcon icon={faCog} className="mr-3" />
                     Profile Settings
-                  </li>
+                  </li> */}
                   <li
                     className="flex items-center px-4 py-2 hover:bg-gray-700 cursor-pointer text-red-400"
                     onClick={handleLogout}

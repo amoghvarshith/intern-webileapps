@@ -112,7 +112,7 @@ const Support = () => {
 
         <input
           type="text"
-          maxLength={10}
+          maxLength={50}
           placeholder="Write your review (max 10 characters)"
           value={review}
           onChange={(e) => setReview(e.target.value)}

@@ -29,7 +29,7 @@ function MovieDetailPage() {
         });
         setVideos(videoResponse.data.results);
 
-        // Fetch cast information
+     //cast info
         const creditsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits`, {
           params: { api_key: API_KEY },
         });
@@ -72,7 +72,6 @@ function MovieDetailPage() {
             </div>
           </div>
 
-          {/* Movie Info Section */}
           <div className="p-8 space-y-6">
             <div>
               <h2 className="text-2xl font-semibold">Genres</h2>

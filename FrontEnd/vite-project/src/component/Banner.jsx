@@ -15,7 +15,7 @@ function Banner() {
             page: 4
           }
         });
-        setImages(response.data.results); // Assuming 'results' contains the array of movies from the response
+        setImages(response.data.results); 
       } catch (error) {
         console.error('Error fetching images:', error);
       }
@@ -27,7 +27,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    }, 3000); // Change the interval time (in milliseconds) as per your requirement
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [images]);

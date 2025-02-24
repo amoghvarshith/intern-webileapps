@@ -17,7 +17,7 @@ function LoginPage({ onLogin }) {
     setError('');
 
     if (activeTab === 'admin') {
-      if (username === '' && password === '') {
+      if (username === 'admin@gmail.com' && password === 'admin123') {
         onLogin('admin');
         setLoading(false);
         navigate('/admindashboard');
@@ -33,6 +33,8 @@ function LoginPage({ onLogin }) {
         });
 
         if (response.data.message === 'Success') {
+          // Save the token
+          localStorage.setItem("token", response.data.token);
           onLogin(username);
           navigate('/');
         } else {
@@ -52,9 +54,13 @@ function LoginPage({ onLogin }) {
 
   return (
     <div
-      className="relative h-screen flex justify-center items-center"
+      className="relative h-screen flex flex-col justify-center items-center"
       style={{ backgroundImage: `url(${loginimage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
+      <h1 className="relative z-10 text-4xl font-bold text-white mb-8 bg-black bg-opacity-70 px-6 py-2 rounded-md shadow-lg"
+       style={{ fontFamily: 'Sandra'}}>
+        Video Management System
+      </h1>
       <form onSubmit={handleSubmit} className="relative z-10 bg-black bg-opacity-70 p-8 rounded-md text-white max-w-xs w-full">
         <div className="flex mb-4">
           <button

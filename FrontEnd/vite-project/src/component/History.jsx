@@ -17,15 +17,15 @@ const History = () => {
     setDeletedHistory([]);
 
     if (!confettiTriggered) {
-      setConfettiTriggered(true); // Prevent multiple triggers
+      setConfettiTriggered(true); 
       confetti({
         particleCount: 1000,
         spread: 100,
         origin: { y: 0.6 },
-        disableForReducedMotion: true, // Optional: for accessibility
+        disableForReducedMotion: true, 
       });
 
-      // Reset confettiTriggered after the animation duration (e.g., 3 seconds)
+      
       setTimeout(() => setConfettiTriggered(false), 3000);
     }
   };
