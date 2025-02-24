@@ -24,7 +24,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/auth/count");
+        const response = await axios.get("https://intern-webileapps.onrender.com");
         setUserCount(response.data.count);
       } catch (err) {
         setError("Failed to fetch user count");
@@ -53,7 +53,7 @@ function AdminDashboard() {
     formData.append("movieFile", file);
 
     try {
-      await axios.post("http://localhost:3000/api/movies/upload", formData, {
+      await axios.post("https://intern-webileapps.onrender.com", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Movie uploaded successfully");
