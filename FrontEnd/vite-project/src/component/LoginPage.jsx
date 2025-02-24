@@ -27,7 +27,7 @@ function LoginPage({ onLogin }) {
       }
     } else {
       try {
-        const response = await axios.post('http://localhost:3000/auth/login', {
+        const response = await axios.post('https://intern-webileapps.onrender.com', {
           username,
           password,
         });
